@@ -1,0 +1,22 @@
+[package]
+name = "misato"
+version = "0.1.0"
+authors = ["Paul COMTE <contact@rqndomhax.io>"]
+repository = "https://github.com/MisatoWiki/Rust-API"
+description = "Official Rust interface for MisatoWiki Web API."
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+include = [ "src/**", "README.md" ]
+keywords = [ "misato", "misato-api", "wiki", "interface" ]
+categories = [ "api-bindings", "web-programming::http-client" ]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies.serde]
+version = "1.0.143"
+features = ["derive"]
+
+[dependencies.ureq]
+version = "2.5.0"
+features = ["json"]
