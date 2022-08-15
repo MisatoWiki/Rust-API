@@ -14,14 +14,25 @@ pub struct AccountCredentials {
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
+pub struct AccountUuid {
+    pub uuid: String,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
+pub struct AccountUsername {
+    pub username: String,
+}
+
+#[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
 pub struct AccountToken {
     pub token: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountFilter {
-    pub uuid: Option<String>,
-    pub username: Option<String>,
+pub struct AccountTokenInfos {
+    pub token: String,
+    pub timestamp: u64,
+    pub expiration_timestamp: u64,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
