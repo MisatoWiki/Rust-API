@@ -1,34 +1,34 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Eq, Hash, PartialEq, Debug, Serialize, Deserialize, Default, Clone)]
-pub struct Account {
+pub struct ApiAccount {
     pub uuid: String,
     pub username: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountCredentials {
+pub struct ApiAccountCredentials {
     pub username: String,
     pub password: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountUuid {
+pub struct ApiAccountUuid {
     pub uuid: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountAccountname {
+pub struct ApiAccountUsername {
     pub username: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountToken {
+pub struct ApiAccountToken {
     pub token: String,
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountTokenInfos {
+pub struct ApiAccountTokenInfos {
     pub token: String,
     pub timestamp: u64,
     pub expiration_timestamp: u64,
@@ -36,7 +36,7 @@ pub struct AccountTokenInfos {
 }
 
 #[derive(Serialize, Deserialize, Default, Debug, PartialEq)]
-pub struct AccountError {
+pub struct ApiAccountError {
     // HTTP Status Code returned
     pub code: u16,
     // Reason for an error
@@ -45,7 +45,7 @@ pub struct AccountError {
     pub description: Option<String>,
 }
 
-impl AccountError {
+impl ApiAccountError {
     // building a custom error.
     pub fn build(code: u16, description: Option<String>) -> Self {
         let reason: String;
