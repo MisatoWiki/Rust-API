@@ -3,11 +3,48 @@ use serde::{de::DeserializeOwned, Deserialize, Serialize};
 
 use core::result::Result;
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Clone, Copy)]
 #[serde(untagged)]
 pub enum Response<Success, Error> {
     Success(Success),
     Error(Error),
+}
+
+impl<Success, Error> Response<Success, Error> {
+    pub fn is_err(&self) -> bool {
+        match self {
+            Self::Success(_) => false,
+            Self::Error(_) => true,
+        }
+    }
+
+    pub fn is_ok(&self) -> bool {
+        match self {
+            Self::Success(_) => true,
+            Self::Error(_) => false,
+        }
+    }
+
+    pub fn unwrap(self) -> Success {
+        match self {
+            Self::Success(value) => value,
+            Self::Error(_) => panic!("Response does not contain Success value."),
+        }
+    }
+
+    pub fn unwrap_ok(self) -> Success {
+        match self {
+            Self::Success(value) => value,
+            Self::Error(_) => panic!("Response does not contain Success value."),
+        }
+    }
+
+    pub fn unwrap_err(self) -> Error {
+        match self {
+            Self::Success(_) => panic!("Response does not contain Error value."),
+            Self::Error(value) => value,
+        }
+    }
 }
 
 #[derive(Debug)]
